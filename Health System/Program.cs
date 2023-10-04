@@ -16,7 +16,7 @@ namespace Health_System
             int pointsgained;
             int healthlost;
 
-            Console.WriteLine("Hud v2.0 Health System");
+            Console.WriteLine("Health System v1.0");
 
 
             Console.WriteLine();
