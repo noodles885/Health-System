@@ -16,18 +16,18 @@ public class Program
         UnitTestHealthSystem();
         //UnitTestXPSystem();
 
+        Console.WriteLine("=====================");
         Console.WriteLine("Health System v1.0");
-
+        Console.WriteLine("Nadim Yazbek");
+        Console.WriteLine("=====================");
 
         ResetGame();
         ShowHUD();
-        TakeDamage(50);
+        TakeDamage(190);
         ShowHUD();
-        TakeDamage(150);
+        TakeDamage(25);
         ShowHUD();
-        Revive();
-        ShowHUD();
-
+        
 
         Console.WriteLine();
         Console.WriteLine("Press any key to exit");
@@ -36,6 +36,18 @@ public class Program
 
     public static void ShowHUD()
     {
+
+        if (health <= 10)
+            healthStatus = "Imminent Danger";
+        else if (health <= 50)
+            healthStatus = "Badly Hurt";
+        else if (health <= 75)
+            healthStatus = "Hurt";
+        else if (health <= 90)
+            healthStatus = "Healthy";
+        else
+            healthStatus = "Perfect Health";
+
         Console.WriteLine("=====================");
         Console.WriteLine("Stats");
         Console.WriteLine("Health: " + health + "%");
@@ -45,17 +57,6 @@ public class Program
         Console.WriteLine("XP: " + xp);
         Console.WriteLine("Level: " + level);
         Console.WriteLine("=====================");
-
-        if (health == 100)
-            healthStatus = "Perfect Health";
-        else if (health <= 90)
-            healthStatus = "Heathy";
-        else if (health <= 75)
-            healthStatus = "Hurt";
-        else if (health <= 50)
-            healthStatus = "Badly Hurt";
-        else if (health <= 10)
-            healthStatus = "Imminent Danger";
 
     }
 
@@ -71,7 +72,7 @@ public class Program
 
         if (shield > 0)
         {
-            if (shield >= damage)
+            if (shield > damage)
             {
                 shield -= damage;
             }
@@ -84,12 +85,12 @@ public class Program
                 if (health < 0)
                 {
                     health = 0;
-                    lives--;
+                    
 
-                    if (lives > 0)
-                    {
-                        Revive();
-                    }
+                    //if (lives > 0)
+                    //{
+                    //    Revive();
+                    //}
                 }
             }
         }
@@ -100,12 +101,12 @@ public class Program
             if (health < 0)
             {
                 health = 0;
-                lives--;
+                
 
-                if (lives > 0)
-                {
-                    Revive();
-                }
+                //if (lives > 0)
+                //{
+                //    Revive();
+                //}
             }
         }
     }
@@ -139,14 +140,14 @@ public class Program
     {
         if (amount < 0)
         {
-            Debug.WriteLine("Error: Negative regeneration amount");
+            Debug.WriteLine("Negative regeneration amount");
             return;
         }
 
            
         if (shield == 100)
         {
-            Debug.WriteLine("Warning: Shield is already at maximum");
+            Debug.WriteLine("Shield is already at maximum");
             return;
         }
 
@@ -160,22 +161,25 @@ public class Program
         }
     }
 
+
     private static void Revive()
     {
         if (lives <= 0)
         {
-            Debug.WriteLine("Error: No remaining lives, cannot revive");
+            Debug.WriteLine("No remaining lives you have lost");
             return;
         }
+        else
+        {
+            health = 100;
+            shield = 100;
 
-            
-        health = 100;
-        shield = 100;
+            lives--;
 
-            
-        lives--;
+        }
+        
 
-        Debug.WriteLine("Player revived! Lives remaining: " + lives);
+        Console.WriteLine("Player revived! Lives remaining: " + lives);
     }
 
     private static void ResetGame()
