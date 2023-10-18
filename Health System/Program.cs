@@ -14,20 +14,25 @@ public class Program
     static void Main(string[] args)
     {
         UnitTestHealthSystem();
-        //UnitTestXPSystem();
+        
 
         Console.WriteLine("=====================");
         Console.WriteLine("Health System v1.0");
         Console.WriteLine("Nadim Yazbek");
         Console.WriteLine("=====================");
+        Console.WriteLine();
 
         ResetGame();
         ShowHUD();
-        TakeDamage(190);
+        TakeDamage(150);
         ShowHUD();
         TakeDamage(25);
         ShowHUD();
-        
+        TakeDamage(69);
+        ShowHUD();
+        Revive();
+        ShowHUD();
+
 
         Console.WriteLine();
         Console.WriteLine("Press any key to exit");
@@ -85,12 +90,6 @@ public class Program
                 if (health < 0)
                 {
                     health = 0;
-                    
-
-                    //if (lives > 0)
-                    //{
-                    //    Revive();
-                    //}
                 }
             }
         }
@@ -101,12 +100,6 @@ public class Program
             if (health < 0)
             {
                 health = 0;
-                
-
-                //if (lives > 0)
-                //{
-                //    Revive();
-                //}
             }
         }
     }
@@ -115,20 +108,16 @@ public class Program
     {
         if (hp < 0)
         {
-            Debug.WriteLine("Error: Negative healing amount");
+            Debug.WriteLine("Negative healing amount");
             return;
         }
-
-            
         if (health == 100)
         {
-            Debug.WriteLine("Warning: Health is already at maximum");
+            Debug.WriteLine("Health is already at maximum");
             return;
         }
-
-            
-        health += hp;
-
+        
+            health += hp;
             
         if (health > 100)
         {
@@ -325,9 +314,5 @@ public class Program
         Console.Clear();
     }
 
-    //private static void UnitTestXPSystem()
-    //{
-    //    // Implement XP / Level Up System unit tests
-    //    // ...
-    //}
+
 }
