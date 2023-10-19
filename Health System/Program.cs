@@ -37,6 +37,10 @@ public class Program
         Revive();
         ShowHUD();
 
+        ResetGame();
+        ShowHUD();
+        TakeDamage(-10);
+        ShowHUD();
 
         Console.WriteLine();
         Console.WriteLine("Press any key to exit");
@@ -75,7 +79,7 @@ public class Program
     {
         if (damage < 0)
         {
-            Debug.WriteLine("Error: Negative damage value");
+            Console.WriteLine("Error: Negative damage value");
             return;
         }
 
