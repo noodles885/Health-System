@@ -24,11 +24,15 @@ public class Program
 
         ResetGame();
         ShowHUD();
-        TakeDamage(150);
+        TakeDamage(105);
         ShowHUD();
         TakeDamage(25);
         ShowHUD();
-        TakeDamage(69);
+        RegenerateShield(40);
+        ShowHUD();
+        Heal(50);
+        ShowHUD();
+        TakeDamage(200);
         ShowHUD();
         Revive();
         ShowHUD();
@@ -108,12 +112,12 @@ public class Program
     {
         if (hp < 0)
         {
-            Debug.WriteLine("Negative healing amount");
+            Console.WriteLine("Negative healing amount");
             return;
         }
         if (health == 100)
         {
-            Debug.WriteLine("Health is already at maximum");
+            Console.WriteLine("Health is already at maximum");
             return;
         }
         
@@ -129,14 +133,14 @@ public class Program
     {
         if (amount < 0)
         {
-            Debug.WriteLine("Negative regeneration amount");
+            Console.WriteLine("Negative regeneration amount");
             return;
         }
 
            
         if (shield == 100)
         {
-            Debug.WriteLine("Shield is already at maximum");
+            Console.WriteLine("Shield is already at maximum");
             return;
         }
 
@@ -155,7 +159,7 @@ public class Program
     {
         if (lives <= 0)
         {
-            Debug.WriteLine("No remaining lives you have lost");
+            Console.WriteLine("No remaining lives you have lost");
             return;
         }
         else
